@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Exemplo</title>
+</head>
+<body>
+    <h1>Formulário de Exemplo</h1>
+    <form id="meuFormulario">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required><br><br>
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="mensagem">Mensagem:</label><br>
+        <textarea id="mensagem" name="mensagem" rows="4" cols="50" required></textarea><br><br>
+
+        <button type="submit">Enviar</button>
+    </form>
+
+    <script>
+        document.getElementById("meuFormulario").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var formularioData = new FormData(this);
+            var dados = {};
+            formularioData.forEach(function(valor, chave) {
+                dados[chave] = valor;
+            });
+            console.log(dados);
+            // Aqui você pode adicionar código para enviar os dados capturados para um servidor ou fazer outras operações.
+            alert("Dados capturados! Veja o console do navegador para ver os dados.");
+            this.reset(); // Limpa o formulário após enviar
+        });
+    </script>
+</body>
+</html>
